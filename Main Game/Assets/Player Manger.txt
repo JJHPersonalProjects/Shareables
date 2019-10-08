@@ -1,0 +1,28 @@
+public class PlayerManager : MonoBehaviour {
+
+	public static int health = 100;
+	public GameObject player;
+	public Slider healthBar;
+	public Canvas canvas;
+
+	// Use this for initialization
+	void Start () {
+		InvokeRepeating ("checkHealth", 1, 1);
+		InvokeRepeating ("OnTriggerEnter", 1, 1);
+	}
+
+	void checkHealth(){
+		health -= 0;
+		healthBar.value = health;
+
+		if (health <= 0) {
+			player.GetComponent<Animator> ().SetBool("isDead",true);
+			canvas.enabled = false;
+		}
+	}
+
+	// Update is called once per frame
+	void Update () {
+	
+	}
+}
